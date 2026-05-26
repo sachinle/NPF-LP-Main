@@ -161,7 +161,7 @@ img { max-width: 100%; }
 
 /* Logo bar */
 .navbar__icon__logo {
-    background: var(--d1);
+    background: white;
     height: 82px;
     display: flex;
     align-items: center;

@@ -188,12 +188,39 @@ img { max-width: 100%; }
 .contact_icon_num p  { font-size: 12px; color: var(--dt3); }
 
 /* ============================================================
-   NAVBAR  — DARK
+   STICKY HEADER (desktop): logo+contacts row AND menu row stay
+   pinned to the top while the welcome topbar scrolls away.
+   #Navbar__section contains the topbar + the logo row; pinning it
+   with a negative top equal to the topbar height slides the topbar
+   off-screen while the logo row settles at top:0. #main__navbar
+   then sticks just below the logo row.
+   ============================================================ */
+@media (min-width: 769px) {
+    #Navbar__section {
+        position: sticky;
+        top: -40px;          /* welcome topbar (40px) slides off-screen */
+        z-index: 1000;
+        background: var(--d1);
+        will-change: transform;
+    }
+    #main__navbar {
+        position: sticky;
+        top: 82px;           /* sits below the 82px logo row */
+        z-index: 999;
+    }
+}
+
+/* ============================================================
+   NAVBAR  — DARK (mobile default: sticks at top; desktop overrides
+   above add top: 82px so it sits below the logo row)
    ============================================================ */
 #main__navbar {
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 999;
+}
+@media (min-width: 769px) {
+    #main__navbar { top: 82px !important; }
 }
 .menu_list {
     background: linear-gradient(90deg, var(--d2) 0%, #0e1930 100%);
@@ -236,6 +263,13 @@ img { max-width: 100%; }
 .navbar-nav .nav-item .nav-link { color: var(--dt2); font-size: 14px; }
 .navbar-toggler { padding: 3px 6px !important; border-color: var(--d-border) !important; }
 .navbar-toggler-icon { filter: invert(1); width: 1.1em; height: 1.1em; }
+/* Mobile navbar logo — force to pure white */
+.mobile-container .navbar-brand img {
+    filter: brightness(0) invert(1);
+    -webkit-filter: brightness(0) invert(1);
+    max-height: 42px;
+    width: auto;
+}
 
 /* ============================================================
    HERO / BANNER  — LIGHT (text-based, locked to navbar)
@@ -955,6 +989,23 @@ section:has(.highlights-img) .title h3 {
     justify-content: center;
     margin-bottom: 28px;
 }
+
+/* Mobile: 2-column grid (12 items × 2 cols = 6 rows — saves space) */
+@media (max-width: 767px) {
+    #hostel-facilities-section .col-md-3.col-lg-3 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .hostel-icons-with-title { margin-bottom: 18px; }
+    .hostel-icon { width: 76px; height: 76px; margin-bottom: 8px; }
+    .hostel-icon img { width: 32px; max-width: 32px; }
+    .hostel-icons-with-title .hostel-desc h6 {
+        font-size: 11px;
+        max-width: 130px;
+    }
+}
 .hostel-icon {
     width: 90px; height: 90px;
     border-radius: 50%;
@@ -1305,21 +1356,6 @@ section:has(.highlights-img) .title h3 {
     .mobile-apply-now { display: block; }
     .mobile-apply-now img { width: 100%; }
     .clg-spl-features { margin: 0 0 16px; }
-    .hostel-icons-with-title {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 12px;
-        margin-bottom: 16px;
-    }
-    .hostel-icon {
-        margin-bottom: 0;
-        flex-shrink: 0;
-    }
-    .hostel-icons-with-title .hostel-desc h6 {
-        text-align: left;
-        max-width: 100%;
-    }
 }
 
 @media (max-width: 480px) {

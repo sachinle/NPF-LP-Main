@@ -190,7 +190,11 @@ img { max-width: 100%; }
 /* ============================================================
    NAVBAR  — DARK
    ============================================================ */
-#main__navbar { position: relative; z-index: 10; }
+#main__navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
 .menu_list {
     background: linear-gradient(90deg, var(--d2) 0%, #0e1930 100%);
     border-bottom: 1px solid var(--d-border);
@@ -416,11 +420,11 @@ span.link a:hover { opacity: .85; transform: translateY(-1px); }
     transform: translateY(-6px);
 }
 .feature_icon {
-    width: 96px; height: 96px;
+    width: 76px; height: 76px;
     background: var(--g-brand);
     border-radius: 50%;
     position: absolute;
-    top: -48px;
+    top: -38px;
     left: 0; right: 0;
     margin: auto;
     display: flex;
@@ -1281,7 +1285,17 @@ section:has(.highlights-img) .title h3 {
     .apply-steps { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .step-card { padding: 20px 12px 16px; }
     .step-num { width: 56px; height: 56px; font-size: 18px; }
-    .feature_icon { position: relative; top: 0; width: auto; height: auto; }
+    .feature_icon {
+        position: relative;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    .feature_icon img {
+        width: 100%;
+        height: 100%;
+    }
     .feature_details { top: 0; padding: 12px 12px 8px; margin: 8px 0; }
     .people_says { margin-bottom: 56px; }
     .scholarship-card { max-height: none; }
@@ -1291,6 +1305,21 @@ section:has(.highlights-img) .title h3 {
     .mobile-apply-now { display: block; }
     .mobile-apply-now img { width: 100%; }
     .clg-spl-features { margin: 0 0 16px; }
+    .hostel-icons-with-title {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .hostel-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .hostel-icons-with-title .hostel-desc h6 {
+        text-align: left;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
